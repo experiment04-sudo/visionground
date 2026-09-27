@@ -2,7 +2,6 @@
 
 A real-time object detection web app that runs entirely on CPU — no GPU, no cloud inference.
 
-<!-- Replace this with your actual screenshot path -->
 ![VisionGround demo](docs/screenshot.png)
 
 ## What it does
@@ -13,32 +12,35 @@ A real-time object detection web app that runs entirely on CPU — no GPU, no cl
 - Runs comfortably on a laptop CPU
 
 ## The 3-stage pipeline
+
+```text
 Webcam frame
-│
-▼
+     │
+     ▼
 ┌────────────────────────────────────┐
-│ STAGE 1 — Spotter │
-│ YOLO11n at 640×640 │
-│ Finds persons, hands, big objects │
+│ STAGE 1 — Spotter                  │
+│ YOLO11n at 640×640                 │
+│ Finds persons, hands, big objects  │
 └────────────────┬───────────────────┘
-│
-▼
+                 │
+                 ▼
 ┌────────────────────────────────────┐
-│ STAGE 2 — Zoomer │
-│ MediaPipe HandLandmarker finds │
-│ hands → crop that region → 2× │
-│ upscale → re-run YOLO on the crop │
-│ Catches small / held objects │
+│ STAGE 2 — Zoomer                   │
+│ MediaPipe HandLandmarker finds     │
+│ hands → crop region → 2× upscale   │
+│ → re-run YOLO on the crop          │
+│ Catches small / held objects       │
 └────────────────┬───────────────────┘
-│
-▼
+                 │
+                 ▼
 ┌────────────────────────────────────┐
-│ STAGE 3 — Namer │
-│ CLIP matches each crop against │
-│ ~30 text prompts ("calculator", │
-│ "spray bottle", "coffee mug", …) │
-│ Re-labels when confident │
+│ STAGE 3 — Namer                    │
+│ CLIP matches each crop against     │
+│ ~30 text prompts ("calculator",    │
+│ "spray bottle", "coffee mug", …)   │
+│ Re-labels when confident           │
 └────────────────────────────────────┘
+```
 
 ## Why 3 models instead of 1
 
@@ -95,13 +97,25 @@ python local_vision_server.py
 npm install
 npm run dev
 # → runs on http://localhost:3000
-What's next
-WebSocket transport instead of HTTP POST (lower latency)
+```
 
-OpenVINO INT8 export for 2–4× CPU speedup
+Open **http://localhost:3000**. Allow camera access. Point it at something.
 
-YOLO-World for open-vocabulary detection (replaces the hand-curated CLIP list)
+Check **http://localhost:8000/health** to see the pipeline status.
 
-Client-side frame downscaling to reduce upload size
+## What's next
 
-A latency/FPS HUD in the UI
+- WebSocket transport instead of HTTP POST (lower latency)
+- OpenVINO INT8 export for 2–4× CPU speedup
+- YOLO-World for open-vocabulary detection (replaces the hand-curated CLIP list)
+- Client-side frame downscaling to reduce upload size
+- A latency/FPS HUD in the UI
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+This project uses [Ultralytics YOLO](https://github.com/ultralytics/ultralytics),
+[OpenAI CLIP](https://github.com/openai/CLIP), and
+[MediaPipe](https://github.com/google-ai-edge/mediapipe),
+each under their own license.
