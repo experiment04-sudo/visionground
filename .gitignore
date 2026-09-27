@@ -1,0 +1,39 @@
+# ============ Python ============
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# ============ Model weights (too big for GitHub) ============
+yolo11n.pt
+yolo11n_openvino_model/
+hand_landmarker.task
+
+# ============ Secrets — NEVER commit ============
+.env
+.env.local
+.env.*.local
+# (but keep the example so users know what to set)
+!.env.example
+
+# ============ Node ============
+node_modules/
+build/
+dist/
+coverage/
+*.log
+
+# ============ Junk files in this folder ============
+node_installer.msi
+npm
+*.zip
+(2).gitignore
+
+# ============ IDE / OS ============
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

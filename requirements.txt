@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+pillow
+numpy
+opencv-python
+ultralytics
+torch
+transformers
+mediapipe
+google-genai

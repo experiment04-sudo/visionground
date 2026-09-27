@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VisionGround: Real-Time Object Detection</title>
+    <script>
+      // Suppress Vite HMR WebSocket connection errors in sandboxed preview
+      window.addEventListener('unhandledrejection', function(event) {
+        var msg = (event.reason && event.reason.message) || String(event.reason || '');
+        if (msg.indexOf('WebSocket') !== -1 || msg.indexOf('closed without opened') !== -1) {
+          event.preventDefault();
+        }
+      });
+      window.addEventListener('error', function(event) {
+        var msg = event.message || '';
+        if (msg.indexOf('WebSocket') !== -1 || msg.indexOf('failed to connect') !== -1) {
+          event.preventDefault();
+        }
+      });
+    </script>
+    <meta name="description" content="Production-grade webcam spatial grounding and object detection application with PyQt6, OpenCV, and Google GenAI SDK." />
+    <meta property="og:title" content="VisionGround: Real-Time Object Detection" />
+    <meta property="og:description" content="Production-grade webcam spatial grounding and object detection application with PyQt6, OpenCV, and Google GenAI SDK." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

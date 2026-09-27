@@ -1,0 +1,10 @@
+{
+  "name": "VisionGround: Real-Time Object Detection",
+  "description": "Production-grade webcam spatial grounding and object detection application with PyQt6, OpenCV, and Google GenAI SDK.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
